@@ -80,7 +80,6 @@ def check_valid_keys(key):
 
     try:
 
-        print(played_keys)
         if int(key) in valid_keys and key not in played_keys:
             played_keys.append(key)
             return "good"
@@ -180,14 +179,7 @@ def play_game():
             display_scores(player_scores)
 
             first_player(main_box)
-            if draw(main_box):
-                print("it's a tie 🤜🤛")
-                display_scores(player_scores)
-                game_on = False
-                sleep(4)
-                play_game()
-
-            elif p1_win_conditions(main_box):
+            if p1_win_conditions(main_box):
                 print("player 1 wins 🎉🎉👏👏")
                 player_scores[0] += 1
                 display_scores(player_scores)
@@ -195,6 +187,12 @@ def play_game():
                 sleep(4)
                 play_game()
 
+            elif draw(main_box):
+                print("it's a tie 🤜🤛")
+                display_scores(player_scores)
+                game_on = False
+                sleep(4)
+                play_game()
 
             else:
                 second_player(main_box)
